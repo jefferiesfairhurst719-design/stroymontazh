@@ -80,6 +80,11 @@
   :root[data-theme="dark"] .toc a:hover{color:#0e1319}
   @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .toc a:hover{color:#0e1319}}
   #d1,#d2,#d3,#reestr,#cifry{scroll-margin-top:66px}
+  @media (max-width:640px){
+    .toc{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .toc::-webkit-scrollbar{display:none}
+    .toc a{flex:0 0 auto;white-space:nowrap}
+  }
 
   /* ---------- секции ---------- */
   section{margin-top:44px}
@@ -309,7 +314,12 @@
   .st-tab.on{background:#22272e;color:#fff;border-color:#22272e}
   .st-tab.on:hover{background:#22272e}
   .st-tools{font-family:var(--mono);font-size:10.5px;color:#8b94a0;margin-left:auto;white-space:nowrap}
-  .tgrid-wrap{overflow-x:auto}
+  .tswipe{display:none;font-family:var(--mono);font-size:10.5px;color:#8b94a0;padding:7px 12px 0}
+  @media (max-width:640px){.tswipe{display:block}}
+  .tgrid-outer{position:relative}
+  .tgrid-outer::after{content:"";position:absolute;top:0;right:0;bottom:0;width:26px;
+    background:linear-gradient(to left,rgba(255,255,255,.95),rgba(255,255,255,0));pointer-events:none}
+  .tgrid-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .tgrid{border-collapse:collapse;width:100%;min-width:700px;font-size:12.5px}
   .tgrid th{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
     color:#8b94a0;text-align:left;padding:8px 10px;border-bottom:1px solid #e4e7eb;
@@ -644,6 +654,8 @@
             <button class="st-tab" id="tb-tab-done">🔒 Готово</button>
             <span class="st-tools">+ запись · фильтр · группировка</span>
           </div>
+          <div class="tswipe">⟷ таблица листается вбок — там объект, источник, исполнитель и цитата</div>
+          <div class="tgrid-outer">
           <div class="tgrid-wrap">
             <table class="tgrid">
               <tr><th>Суть</th><th>Статус</th><th>Объект</th><th>Источник</th><th>Исполнитель</th><th>Тип действия</th><th>Цитата</th></tr>
@@ -713,6 +725,7 @@
                 <td class="tg-quote">«сегодня поменяю, подрядчику отпишусь»</td>
               </tr>
             </table>
+          </div>
           </div>
         </div>
       </div>
@@ -1005,7 +1018,7 @@
   });
 })();
 </script>
-<!-- v3.6 -->
+<!-- v3.7 -->
 
 </body>
 </html>
