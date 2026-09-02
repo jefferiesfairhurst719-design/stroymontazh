@@ -155,7 +155,7 @@
   .tf .v .now{background:var(--yellow);color:var(--yellow-ink);border-radius:4px;padding:0 4px;font-variant-numeric:tabular-nums}
 
   /* телефон */
-  .phone{background:var(--bezel);border-radius:22px;padding:10px 10px 14px;max-width:330px;box-shadow:var(--shadow)}
+  .phone{background:var(--bezel);border-radius:18px;padding:5px 5px 7px;max-width:330px;box-shadow:var(--shadow)}
   .phone .scr{background:var(--bg);border-radius:14px;padding:12px;min-height:120px}
   .phone .bar{display:flex;align-items:center;gap:8px;margin-bottom:10px}
   .phone .bar .dot{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
@@ -215,6 +215,7 @@
   @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .st-review{color:#0e1319}}
   .st-done{background:var(--ok);color:#fff}
   .st-late{background:var(--late);color:#fff}
+  .st-move{background:var(--warn);color:#fff}
   tr.active-row{background:var(--blue-soft)}
   tr.flash td{animation:okflash 1s ease 1}
   @keyframes okflash{30%{background:var(--blue-soft)}}
@@ -321,8 +322,10 @@
   .tgrid tr.tbflash td{animation:tbflash .9s ease 1}
   @keyframes tbflash{30%{background:#fff3c4}}
   .tchip{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:2px 9px}
-  .tc-por{background:#ffe7cf;color:#8a4b00}
-  .tc-dog{background:#d9f2e2;color:#1e6b41}
+  .sc-plan{background:#cfe7f7;color:#155a85}
+  .sc-zvon{background:#2077ad;color:#fff}
+  .sc-chat{background:#64778c;color:#fff}
+  .sc-hand{background:#d8dde3;color:#454e59}
   .tc-call{background:#2f9e5f;color:#fff}
   .tc-doc{background:#eef1f4;color:#4a5561}
   .tc-log{background:#ffd424;color:#1c2430}
@@ -333,6 +336,7 @@
   .tst-review{background:#2077ad;color:#fff}
   .tst-done{background:#2f9e5f;color:#fff}
   .tst-late{background:#d84a3a;color:#fff}
+  .tst-move{background:#e0930f;color:#fff}
   .shot-cap{font-family:var(--mono);font-size:11.5px;color:var(--ink3);margin:10px 2px 0;line-height:1.6}
   @media (max-width:640px){.shot-side{display:none}}
 
@@ -353,8 +357,6 @@
     .phone{max-width:100%}
   }
 </style>
-</head>
-<body>
 
 <div class="page">
 
@@ -439,9 +441,10 @@
               <div class="msg push" id="d1-push">
                 <div class="pt">Telegram · Сергею</div>
                 Новая задача: <b>закрыть акты с заказчиком</b><br>Объект: Конгресс-холл · срок: пт, 04.09
+                <div class="kb"><button class="kbtn" id="d1-take">Взял в работу</button></div>
                 <div class="tm">14:33</div>
               </div>
-              <div class="toast" id="d1-toast">Андрею (постановщику): задача <b>зафиксирована ✓</b></div>
+              <div class="toast" id="d1-toast"></div>
             </div>
           </div>
         </div>
@@ -466,8 +469,8 @@
   <!-- ================= ДЕМО 2 ================= -->
   <section id="d2">
     <div class="sec-label">Демо 02 · чат объекта → личка</div>
-    <h2>Поручение из стройчата само находит исполнителя</h2>
-    <p class="sec-note">Каждое сообщение чата сохраняется и анализируется: что здесь рабочий шум, а что поручение. Поручение — сразу адресату в личку.</p>
+    <h2>Задача из чата по объектам сама находит исполнителя</h2>
+    <p class="sec-note">Каждое сообщение чата сохраняется и анализируется: что здесь рабочий шум, а что задача. Задача — сразу адресату в личку.</p>
 
     <div class="demo">
       <div class="try"><span class="fing">👇</span>нажмите, чтобы попробовать</div>
@@ -492,23 +495,23 @@
             <div class="scr">
               <div class="bar"><div class="dot">СМ</div><div><div class="nm">СМ-бот</div><div class="st">онлайн</div></div></div>
               <div class="msg push" id="d2-push">
-                <div class="pt">Поручение из чата</div>
+                <div class="pt">Задача из чата</div>
                 <b>Заказать доборы, 3-я секция</b><br>ЖК Ньютон · до чт, 03.09
                 <div class="kb"><button class="kbtn" id="d2-ack">✅ Выполнено</button></div>
                 <div class="tm">09:31</div>
               </div>
               <div class="msg remind" id="d2-remind">
                 <div class="pt" style="color:var(--warn)">17:30 · напоминание</div>
-                Поручение без отметки: <b>заказать доборы</b>. Не потеряй.
+                Задача без отметки: <b>заказать доборы</b>. Не потеряй.
                 <div class="tm">17:30</div>
               </div>
-              <div class="toast" id="d2-ok">Выполнено ✓ — вечернее напоминание <b>не понадобится</b></div>
+              <div class="toast" id="d2-ok">Отметка ушла Марату на приёмку ✓ — вечернее напоминание <b>не понадобится</b></div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="demo-foot">Так разбираются 14 чатов объектов — каждый день, дважды в день. Не отметил — вечером система напомнит сама.</div>
+      <div class="demo-foot">Так разбираются 14 чатов объектов — каждый день, дважды в день. Не отметил — вечером система напомнит сама. Отметка исполнителя — ещё не закрытие: задачу примет постановщик, как в демо 3.</div>
     </div>
   </section>
 
@@ -531,7 +534,7 @@
                 <b>Смонтировать леса, 2-я секция</b><br>Академ Riverside · срок: сегодня
                 <div class="kb">
                   <button class="kbtn" id="d3-btn">Взял в работу</button>
-                  <button class="kbtn ghost" id="d3-move" disabled>Перенести срок</button>
+                  <button class="kbtn" id="d3-move" disabled>Перенести срок</button>
                 </div>
                 <div class="tm">08:00</div>
               </div>
@@ -572,7 +575,7 @@
           <div class="grid-wrap">
             <table class="grid">
               <tr><th>Задача · объект · срок</th><th>Статус</th></tr>
-              <tr><td><span class="tn">Закрыть акты с заказчиком</span><span class="obj due due-ok">Конгресс-холл · <i></i>пт, 04.09</span></td><td><span class="chip st-new">Новая</span></td></tr>
+              <tr id="g-akty"><td><span class="tn">Закрыть акты с заказчиком</span><span class="obj due due-ok">Конгресс-холл · <i></i>пт, 04.09</span></td><td><span class="chip st-new" id="g-akty-chip">Новая</span></td></tr>
               <tr id="g-dobory"><td><span class="tn">Заказать доборы, 3-я секция</span><span class="obj due due-soon">ЖК Ньютон · <i></i>чт, 03.09</span></td><td><span class="chip st-work" id="g-dobory-chip">В работе</span></td></tr>
               <tr class="active-row" id="d3-row"><td><span class="tn">Смонтировать леса, 2-я секция</span><span class="obj due due-soon">Академ Riverside · <i></i><span id="d3-duetxt">сегодня</span></span></td><td><span class="chip st-new" id="d3-chip">Новая</span></td></tr>
               <tr><td><span class="tn">Передать спецификацию по ВК</span><span class="obj due due-late">Конгресс-холл · <i></i>вчера</span></td><td><span class="chip st-late">Просрочена</span></td></tr>
@@ -619,8 +622,8 @@
         <div class="bs-now">Собственник видит картину по всем объектам в одном окне</div>
       </div>
     </div>
-    <p class="sec-note" style="margin:16px 0 0">Реестр — не гугл-таблица, из таблиц мы как раз ушли:
-    задачи живут в базе данных (Teable на Postgres), куда мусор не запишешь — исполнитель, объект,
+    <p class="sec-note" style="margin:16px 0 0">Реестр — не гугл- или Excel-таблица, из таблиц мы как раз ушли:
+    задачи живут в базе данных (Teable на PostgreSQL), куда мусор не запишешь — исполнитель, объект,
     срок и статус проверяются на входе. А интерфейс один и привычный каждому — Telegram:
     учить людей новому софту не пришлось.</p>
 
@@ -630,28 +633,26 @@
       <div class="shot-body">
         <div class="shot-side">
           <div class="ss-t">Регистр задач</div>
-          <div class="ss-i">Стратегические задачи</div>
-          <div class="ss-i on">Журнал поручений и&nbsp;договорённостей</div>
+          <div class="ss-i on">Задачи</div>
           <div class="ss-i">Справочники</div>
-          <div class="ss-i">Повторяющиеся задачи</div>
-          <div class="ss-i">Бот</div>
+          <div class="ss-i">Настройки бота</div>
           <div class="ss-i ph">…здесь может быть любая таблица, необходимая вашему бизнесу</div>
         </div>
         <div class="shot-main">
           <div class="shot-tabs">
             <button class="st-tab on" id="tb-tab-work">🔒 В работе</button>
-            <button class="st-tab" id="tb-tab-done">🔒 Выполнено</button>
+            <button class="st-tab" id="tb-tab-done">🔒 Готово</button>
             <span class="st-tools">+ запись · фильтр · группировка</span>
           </div>
           <div class="tgrid-wrap">
             <table class="tgrid">
-              <tr><th>Суть</th><th>Статус</th><th>Объект</th><th>Вид</th><th>Исполнитель</th><th>Тип действия</th><th>Цитата</th></tr>
-              <tr class="tg-group"><td colspan="7">Дата планёрки · 01.09.2026</td></tr>
+              <tr><th>Суть</th><th>Статус</th><th>Объект</th><th>Источник</th><th>Исполнитель</th><th>Тип действия</th><th>Цитата</th></tr>
+              <tr class="tg-group"><td colspan="7">Дата · 01.09.2026</td></tr>
               <tr data-task="dobory" data-st="work">
                 <td>заказать доборы на 3-ю секцию</td>
                 <td><span class="tst tst-work">В работе</span></td>
                 <td>ЖК Ньютон</td>
-                <td><span class="tchip tc-por">поручение</span></td>
+                <td><span class="tchip sc-chat">чат Telegram</span></td>
                 <td>Лёха М.</td>
                 <td><span class="tchip tc-log">🚚 Логистика / Снабжение</span></td>
                 <td class="tg-quote">«Лёх, надо доборы заказать к четвергу»</td>
@@ -660,26 +661,26 @@
                 <td>передать спецификацию по ВК</td>
                 <td><span class="tst tst-late">Просрочена</span></td>
                 <td>Конгресс-холл</td>
-                <td><span class="tchip tc-por">поручение</span></td>
+                <td><span class="tchip sc-plan">планёрка Zoom</span></td>
                 <td>Марат Г.</td>
                 <td><span class="tchip tc-doc">🧮 Расчёт / Документ</span></td>
                 <td class="tg-quote">«спецификацию передай, монтажники ждут»</td>
               </tr>
               <tr data-task="vodost" data-st="done" hidden>
                 <td>отвезти водосточку на объект</td>
-                <td><span class="tst tst-done">Выполнено ✓</span></td>
+                <td><span class="tst tst-done">Готово ✓</span></td>
                 <td>ЖК Ньютон</td>
-                <td><span class="tchip tc-por">поручение</span></td>
+                <td><span class="tchip sc-hand">вручную</span></td>
                 <td>Виталя К.</td>
                 <td><span class="tchip tc-log">🚚 Логистика / Снабжение</span></td>
                 <td class="tg-quote">«водосточку завези, заодно сварочник забери»</td>
               </tr>
-              <tr class="tg-group"><td colspan="7">Дата планёрки · 02.09.2026</td></tr>
+              <tr class="tg-group"><td colspan="7">Дата · 02.09.2026</td></tr>
               <tr data-task="akty" data-st="new">
                 <td>закрыть акты с заказчиком</td>
                 <td><span class="tst tst-new">Новая</span></td>
                 <td>Конгресс-холл</td>
-                <td><span class="tchip tc-por">поручение</span></td>
+                <td><span class="tchip sc-plan">планёрка Zoom</span></td>
                 <td>Сергей П.</td>
                 <td><span class="tchip tc-doc">🧮 Расчёт / Документ</span></td>
                 <td class="tg-quote">«Серёг, надо закрыть акты до конца недели»</td>
@@ -688,7 +689,7 @@
                 <td>смонтировать леса, 2-я секция</td>
                 <td><span class="tst tst-new">Новая</span></td>
                 <td>Академ Riverside</td>
-                <td><span class="tchip tc-por">поручение</span></td>
+                <td><span class="tchip sc-plan">планёрка Zoom</span></td>
                 <td>Сергей П.</td>
                 <td><span class="tchip tc-fix">🔧 Работы на объекте</span></td>
                 <td class="tg-quote">«с утра ставим леса на вторую секцию»</td>
@@ -697,16 +698,16 @@
                 <td>согласовать утренний завоз бетона</td>
                 <td><span class="tst tst-work">В работе</span></td>
                 <td>Академ Riverside</td>
-                <td><span class="tchip tc-dog">договорённость</span></td>
+                <td><span class="tchip sc-zvon">звонок</span></td>
                 <td>Марат Г.</td>
                 <td><span class="tchip tc-call">📞 Звонок / Согласование</span></td>
                 <td class="tg-quote">«созвонюсь и зафиксируем на 7:00»</td>
               </tr>
               <tr data-task="zamki" data-st="done" hidden>
                 <td>поменять замки и дать ответ подрядчику</td>
-                <td><span class="tst tst-done">Выполнено ✓</span></td>
+                <td><span class="tst tst-done">Готово ✓</span></td>
                 <td>Конгресс-холл</td>
-                <td><span class="tchip tc-por">поручение</span></td>
+                <td><span class="tchip sc-chat">чат Telegram</span></td>
                 <td>Лёха М.</td>
                 <td><span class="tchip tc-fix">🔧 Устранение замечаний</span></td>
                 <td class="tg-quote">«сегодня поменяю, подрядчику отпишусь»</td>
@@ -718,14 +719,14 @@
     </div>
     <p class="shot-cap">Вкладки кликабельны, а реестр связан с демо выше: отметь «Выполнено» в демо 2
     или пройди цикл в демо 3 — статусы здесь поменяются сами. Каждая запись хранит цитату — кто и какими
-    словами дал поручение. Интерфейс настоящий, записи на макете вымышленные.</p>
+    словами поставил задачу. Интерфейс настоящий, записи на макете вымышленные.</p>
   </section>
 
   <!-- ================= ЦИФРЫ ================= -->
   <section id="cifry">
     <div class="sec-label">Цифры</div>
     <h2>Что это даёт в живой компании</h2>
-    <p class="chan-lede">Задачи, поручения и договорённости извлекаются из всех каналов связи компании:</p>
+    <p class="chan-lede">Задачи извлекаются из всех каналов связи компании:</p>
     <div class="chans">
       <span class="chan">планёрки и созвоны в Zoom</span>
       <span class="chan">звонки по телефону</span>
@@ -772,6 +773,9 @@
     document.querySelectorAll('#d1-src-call .hl, #d1-src-voice .hl').forEach(h => h.classList.remove('lit'));
     $('d1-mic').style.visibility = 'hidden';
     $('d1-rec').classList.remove('pulse');
+    const tk = $('d1-take'); tk.disabled = false; tk.textContent = 'Взял в работу';
+    tbSet('akty','new');
+    const gac = $('g-akty-chip'); gac.className = 'chip st-new'; gac.textContent = 'Новая';
   }
   function d1tab(mode){
     if (d1busy) return;
@@ -798,6 +802,7 @@
     await s(600);
     on($('d1-card'),'sent');
     on($('d1-push'));          await s(600);
+    $('d1-toast').innerHTML = 'Кнопка в пуше живая — нажмите «Взял в работу» за Сергея';
     on($('d1-toast'));
   }
   d1run.addEventListener('click', async () => {
@@ -824,10 +829,21 @@
     d1busy = false; d1run.disabled = false;
     d1run.innerHTML = '<span class="tri"></span>Ещё раз';
   });
+  $('d1-take').addEventListener('click', () => {
+    const b = $('d1-take');
+    if (b.disabled) return;
+    b.disabled = true; b.textContent = 'В работе ✓';
+    $('d1-toast').innerHTML = 'Андрею (постановщику): <b>Сергей взял задачу в работу ✓</b>';
+    on($('d1-toast'));
+    tbSet('akty','work');
+    const gac = $('g-akty-chip'); gac.className = 'chip st-work'; gac.textContent = 'В работе';
+    const gar = $('g-akty'); gar.classList.remove('flash'); void gar.offsetWidth; gar.classList.add('flash');
+  });
 
   /* ---------- Teable-мокап: вкладки + сквозные статусы ---------- */
   const TST = {new:['tst-new','Новая'], work:['tst-work','В работе'], review:['tst-review','На приёмке'],
-               done:['tst-done','Выполнено ✓'], late:['tst-late','Просрочена']};
+               done:['tst-done','Готово ✓'], late:['tst-late','Просрочена'],
+               move:['tst-move','Перенос срока']};
   const tbRows = Array.from(document.querySelectorAll('.tgrid tr[data-task]'));
   const tbGroups = Array.from(document.querySelectorAll('.tgrid tr.tg-group'));
   let tbView = 'work';
@@ -893,8 +909,8 @@
     $('d2-ack').textContent = 'Выполнено ✓';
     off($('d2-remind'));
     on($('d2-ok'));
-    tbSet('dobory','done');
-    const gdc = $('g-dobory-chip'); gdc.className = 'chip st-done'; gdc.textContent = 'Выполнено ✓';
+    tbSet('dobory','review');
+    const gdc = $('g-dobory-chip'); gdc.className = 'chip st-review'; gdc.textContent = 'На приёмке';
     const gdr = $('g-dobory'); gdr.classList.remove('flash'); void gdr.offsetWidth; gdr.classList.add('flash');
   });
 
@@ -941,22 +957,28 @@
     $('d3-boss2-txt').innerHTML = 'Сергей просит перенос: <b>до ' + mvDate + '</b>. Причина: ' + b.dataset.mvwhy + '.';
     off(mv);
     $('d3-mv-step2').hidden = true; $('d3-mv-step1').hidden = false;
+    setChip('st-move','Перенос срока'); flash();
+    tbSet('lesa','move');
     say('Запрос переноса ушёл постановщику ↓');
     on(boss2);
   }));
   $('d3-mv-ok').addEventListener('click', () => {
     off(boss2);
+    setChip('st-work','В работе');
     duetxt.textContent = mvDate; flash();
-    say('Перенос согласован. Новый срок в реестре: ' + mvDate + '.');
+    tbSet('lesa','work');
+    say('Перенос согласован. Новый срок в реестре: ' + mvDate + '. Задача снова «В работе».');
   });
   $('d3-mv-no').addEventListener('click', () => {
     off(boss2);
-    say('Отказ. Работаем по прежнему сроку — сегодня.');
+    setChip('st-work','В работе'); flash();
+    tbSet('lesa','work');
+    say('Отказ. Работаем по прежнему сроку — сегодня. Задача снова «В работе».');
   });
   $('d3-accept').addEventListener('click', () => {
     if (st !== 'review') return;
     st = 'done';
-    setChip('st-done','Закрыта ✓'); flash();
+    setChip('st-done','Готово ✓'); flash();
     off(boss);
     say('Принято. Задача закрыта и ушла в архив — сама.');
     tbSet('lesa','done');
@@ -983,6 +1005,7 @@
   });
 })();
 </script>
-<!-- v3.3 -->
+<!-- v3.6 -->
+
 </body>
 </html>
